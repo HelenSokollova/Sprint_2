@@ -24,13 +24,10 @@ class PointsForMeters:
             return PointsForMeters.points
 
 class TotalPoints(PointsForPlace, PointsForMeters):
-
-    @staticmethod
-    def get_total_points(place, meters):
-        place_points = PointsForPlace.get_points_for_place(place)
-        meters_points = PointsForMeters.get_points_for_meters(meters)
-        if isinstance(place_points, str) or isinstance(meters_points, str):
-            return "Ошибка: невозможно сложить строку и число"
+    
+    def get_total_points(self, place, meters):
+        place_points = self.get_points_for_place(place)
+        meters_points = self.get_points_for_meters(meters)
         total = place_points + meters_points
         return total
 
